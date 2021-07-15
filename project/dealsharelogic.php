@@ -35,6 +35,10 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
                 <h5>Address:</h5>
                 <ul>'. htmlentities($row['company_address']).'</br>'. htmlentities($row['company_postcode']) .'</br>'. htmlentities($row['company_country']) .'</ul>
             </div>
+            <div class="col-lg-12 d-flex justify-content-end">
+                <button type="button" name="share">share</button>
+                <button type="button" name="redeem">redeem</button>
+            </div>
             </div>';
     }
 }
