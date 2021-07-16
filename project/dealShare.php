@@ -20,7 +20,7 @@
     </script>
 </head>
 
-<body>
+<body class="bg">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ms_MY/sdk.js#xfbml=1&version=v11.0"
         nonce="4R0xQADw"></script>
@@ -32,14 +32,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="main-navigation">
-
-            <form class="form-inline my-2 my-lg-0" method="POST">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                    name="dealID">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="homepage.php">Home</a>
                 </li>
@@ -53,6 +46,11 @@
                     <a class="nav-link" href="deal_review.php">Review</a>
                 </li>
             </ul>
+            <form class="form-inline my-2 my-lg-0" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    name="dealID">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius:10px; height:35px"><i class="fa fa-search"></i></button>
+            </form>
 
     </nav>
 

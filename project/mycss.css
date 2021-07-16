@@ -8,3 +8,8 @@
     color: #fff;
     cursor: pointer;
 }
+
+.bg{
+    background-image: url(Icon/bg.jpg);
+    background-attachment: fixed;
+}

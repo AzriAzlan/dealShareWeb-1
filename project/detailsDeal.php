@@ -17,7 +17,7 @@
     </script>
 </head>
 
-<body>
+<body class="bg">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ms_MY/sdk.js#xfbml=1&version=v11.0"
         nonce="4R0xQADw"></script>
@@ -29,9 +29,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="main-navigation">
-
-
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="homepage.php">Home</a>
                 </li>
@@ -51,7 +49,7 @@
     <!--Content-->
     <div class="container-fluid">
         <div class="d-flex justify-content-center">
-            <div class="row content" style="border-top:solid darkcyan 10px; width:80%; border-radius:10px">
+            <div class="row content" style="border-top:solid darkcyan 10px; width:80%; border-radius:10px; background-color:white">
                 <?php
                     include "detailsDeallogic.php"
                 ?>

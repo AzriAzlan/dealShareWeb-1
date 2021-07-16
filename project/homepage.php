@@ -16,7 +16,7 @@
 </head>
 
 
-<body>
+<body class="bg">
     <!--navigation-->
 
     <nav class="navbar navbar-fixed-top navbar-expand-md justify-content-end navbar-dark bg-primary" >
@@ -26,13 +26,7 @@
         </button>
         <div class="collapse navbar-collapse" id="main-navigation">
 
-            <form class="form-inline my-2 my-lg-0" method="POST">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                    name="dealID">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="homepage.php">Home</a>
                 </li>
@@ -46,13 +40,17 @@
                     <a class="nav-link" href="deal_review.php">Review</a>
                 </li>
             </ul>
-
+            <form class="form-inline my-2 my-lg-0" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    name="dealID">
+                <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius:10px; height:35px"><i class="fa fa-search"></i></button>
+            </form>
     </nav>
 
 
 
     <!--Content-->
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="d-flex justify-content-center">
             <div class="row d-flex justify-content-start" style="width:90%">
                 <?php

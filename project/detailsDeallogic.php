@@ -20,8 +20,8 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
             '<img class="col-lg-3" src="data:image/jpeg;base64,'.base64_encode($row['deal_logo']).'"/ style="margin-top:10px; height:300;">
             <div class="col-lg-9" style="margin-top:10px">
                 <form method="POST">
-                    <button class="float-right" type="submit" name="claim" style="background:none; border:none; position:" >
-                        <img src="Icon/2635422.png" style="width:5rem; height:5rem;">
+                    <button class="btn float-right" type="submit" name="claim" style="background:none; border:none; " >
+                        <i class="fa fa-bookmark-o fa-3x" aria-hidden="true"></i>
                     </button>
                 </form>
                 <h1 style="color:black; text-align:center; font-size:50px; text-transform: uppercase;">'. htmlentities($row['deal_name']) . '</h1>
