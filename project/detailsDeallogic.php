@@ -19,6 +19,11 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
         echo
             '<img class="col-lg-3" src="data:image/jpeg;base64,'.base64_encode($row['deal_logo']).'"/ style="margin-top:10px; height:300;">
             <div class="col-lg-9" style="margin-top:10px">
+                <form method="POST">
+                    <button class="float-right" type="submit" name="claim" style="background:none; border:none; position:" >
+                        <img src="Icon/2635422.png" style="width:5rem; height:5rem;">
+                    </button>
+                </form>
                 <h1 style="color:black; text-align:center; font-size:50px; text-transform: uppercase;">'. htmlentities($row['deal_name']) . '</h1>
                 <div class="row" style="border-top-style:solid; border-bottom-style:solid;">
                     <p class="col-lg-6" style="text-align:left;">Promo code: <strong>'. htmlentities($row['promo_code']) . '</strong></p>
@@ -33,6 +38,15 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
                 <h5>Address:</h5>
                 <ul>'. htmlentities($row['company_address']).'</br>'. htmlentities($row['company_postcode']) .'</br>'. htmlentities($row['company_country']) .'</ul>
             </div>';
+            if (isset($_POST['claim'])){
+                $sql = "INSERT INTO saved_deals (user_id,deal_id) VALUES (:userid,:dealid)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(array(
+                    ':userid' => $_SESSION['user_id'],
+                    ':dealid' => $dealID
+                )
+            );
+            }
     }
 }
 ?>

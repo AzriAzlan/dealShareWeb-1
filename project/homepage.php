@@ -4,7 +4,6 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <link rel="stylesheet" href="mycss.css">
     <!-- Load icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,9 +19,9 @@
 <body>
     <!--navigation-->
 
-    <nav class="navbar navbar-fixed-top navbar-expand-md justify-content-end bg-dark">
+    <nav class="navbar navbar-fixed-top navbar-expand-md justify-content-end navbar-dark bg-primary" >
         <a class="navbar-brand" href="#">DealShare</a>
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" > 
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="main-navigation">
@@ -53,11 +52,13 @@
 
 
     <!--Content-->
-    <div class="container" style="margin-left:300px">
-        <div class="row d-flex justify-content-start">
-            <?php
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center">
+            <div class="row d-flex justify-content-start" style="width:90%">
+                <?php
                     include "homepagelogic.php"
-            ?>
+                ?>
+            </div>
         </div>
     </div>
 </body>

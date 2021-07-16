@@ -11,27 +11,13 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
     foreach ($result as $row) {
         $dealnum=htmlentities($row['deal_id']);
         echo
-        '<div class="col-lg-3 card content" style="background-color:white" onclick="details(\''.$dealnum.'\')">
+        '<div class="col-lg-2 card content" style="background-color:white; border-bottom:solid blue 5px" onclick="details(\''.$dealnum.'\')">
                 <img height=120 width=110 src="data:image/jpeg;base64,'.base64_encode($row['deal_logo']).'"/ class="mx-auto d-block">
-                <div class="card-body" style="height:10rem">  
+                <div class="card-body" style="height:11rem;">  
                     <h5 class="card-title" style="color:black; text-transform:uppercase; text-align:center; border-top-style:solid;border-bottom-style:solid;">'. htmlentities($row['deal_name']) . '</h5>
-                    <p class="card-text">'. htmlentities($row['description']) . '</p>
+                    <p class="card-text" style="">'. htmlentities($row['tagLine']) . '</p>
                 </div>
-                <form method="POST">
-                    <button type="submit" name="claim" style="background:none; border:none; margin-left:10rem" >
-                        <img src="Icon/2635422.png" style="width:5rem; height:5rem;">
-                    </button>
-                </form>
         </div>';  
-        if (isset($_POST['claim'])){
-            $sql = "INSERT INTO saved_deals (user_id,deal_id) VALUES (:userid,:dealid)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(array(
-                ':userid' => $_SESSION['user_id'],
-                ':dealid' => $dealnum
-            )
-        );
-        }
     }
 }
 else if(isset($_POST['dealID']) && $_POST['dealID']>=0 ){

@@ -23,7 +23,7 @@
         nonce="4R0xQADw"></script>
     <!--navigation-->
 
-    <nav class="navbar navbar-fixed-top navbar-expand-md justify-content-end bg-dark">
+    <nav class="navbar navbar-fixed-top navbar-expand-md justify-content-end navbar-dark bg-primary">
         <a class="navbar-brand" href="#">DealShare</a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
     <!--Content-->
     <div class="container-fluid">
         <div class="d-flex justify-content-center">
-            <div class="row content" style="border-top-style:solid; border-top-color:darkcyan; border-top-width:10px; width:80%">
+            <div class="row content" style="border-top:solid darkcyan 10px; width:80%; border-radius:10px">
                 <?php
                     include "detailsDeallogic.php"
                 ?>
