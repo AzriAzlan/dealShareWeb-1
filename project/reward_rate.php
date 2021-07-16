@@ -30,8 +30,8 @@ $stmt = $pdo->prepare("SELECT category, point_conversion FROM reward_rate;");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ( $rows === false ) {
-    header('Location: user_management.php');
-    return;
+  header('Location: user_management.php');
+  return;
 }
 
 ?>

@@ -42,6 +42,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="deal_review.php">Review</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="rewardpage.php">Reward</a>
+                </li>
             </ul>
 
     </nav>
