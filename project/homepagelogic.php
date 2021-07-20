@@ -1,14 +1,22 @@
 <?php
-session_start();
-
 //pdo
 $pdo = new PDO('mysql:host=localhost;port=3306;dbname=dealShare','root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST['name']))){
+if(!(isset($_POST['dealID']))){
     $stmts = $pdo->query('SELECT d.deal_id,d.deal_name, d.deal_logo, d.promo_code, d.tagLine, d.reward, d.reward_unit, d.description,r.deal_status FROM deal d inner join deal_review r on d.deal_id=r.deal_id where r.deal_status="approved"');
     $result = $stmts->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($result as $row) {
+    if(isset($_POST['DealName'])){
+        usort($result, function($a, $b) {
+            return $a['deal_name'] <=> $b['deal_name'];
+        });
+    }
+    else if(isset($_POST['DealID'])){
+        usort($result, function($a, $b) {
+            return $a['deal_id'] <=> $b['deal_id'];
+        });
+    }
+    foreach ($result as $row ) {
         $dealnum=htmlentities($row['deal_id']);
         echo
         '<div class="col-lg-2 card content" style="background-color:white; border-bottom:solid blue 5px" onclick="details(\''.$dealnum.'\')">
@@ -18,7 +26,7 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
                     <p class="card-text" style="">'. htmlentities($row['tagLine']) . '</p>
                 </div>
         </div>';  
-    }
+    } 
 }
 else if(isset($_POST['dealID']) && $_POST['dealID']>=0 ){
     echo '<script type="text/javascript"> details('.$_POST['dealID'].'); </script>';

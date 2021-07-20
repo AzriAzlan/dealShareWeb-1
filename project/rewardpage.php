@@ -52,8 +52,7 @@
             <form class="form-inline my-2 my-lg-0" method="POST">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                     name="dealID">
-                <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius:10px; height:35px"><i
-                        class="fa fa-search"></i></button>
+                    <button class="btn my-2 my-sm-0" type="submit" style="border-radius:10px; height:35px; background-color:aqua"><i class="fa fa-search"></i></button>
             </form>
 
     </nav>

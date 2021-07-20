@@ -15,6 +15,16 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
          ':uid' => $_SESSION['user_id']
      ));
     $result = $stmts->fetchAll(PDO::FETCH_ASSOC);
+    if(isset($_POST['DealName'])){
+        usort($result, function($a, $b) {
+            return $a['deal_name'] <=> $b['deal_name'];
+        });
+    }
+    else if(isset($_POST['DealID'])){
+        usort($result, function($a, $b) {
+            return $a['deal_id'] <=> $b['deal_id'];
+        });
+    }
     foreach ($result as $row) {
         $dealID=htmlentities($row['deal_id']);
         echo
@@ -48,21 +58,19 @@ if(!(isset($_POST['dealID'])) && !(isset($_POST['promocode'])) && !(isset($_POST
                             <div class="modal-content">
         
                                 <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">'.htmlentities($row['deal_name']).'</h4>
+                                <div class="modal-header ">
+                                    <h4 class="modal-title"><strong>'.htmlentities($row['deal_name']).'</strong></h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <h1 style="font-size:30px">Tagline:</h1>
-                                    <p class="card-text">'. htmlentities($row['tagLine']) . '</p>
                                     <h1 style="font-size:30px">Description:</h1>
                                     <p class="card-text">'. htmlentities($row['description']) . '</p>
                                     <h1 style="font-size:30px">Reward:</h1>
                                     <p class="card-text">'. htmlentities($row['reward']). htmlentities($row['reward_unit']) . '</p>
                                 </div>
                                 <!-- Modal footer -->
-                                <div class="modal-footer">
+                                <div class="modal-footer d-flex justify-content-center">
                                     <div data-href="http://localhost/deal%20application/homepage.php" data-layout="button" data-size="large">
                                         <a target="_blank"
                                             href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%2Fdeal%2520application%2Fhomepage.php&amp;src=sdkpreparse"
