@@ -1,3 +1,7 @@
+<?php 
+require_once "pdo.php";
+session_start();
+?>
 <html>
 
 <head>
@@ -73,9 +77,51 @@
                         <li>3rd generation referrer 1 point. </li>
                     </ul>
                     <h5>Point:</h5>
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="50" style="border:solid 1px; border-radius:10px; background-color:gainsboro">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" 
+                    value="<?php 
+                        $total = 0;
+                        //calculate upline 1st generation
+                        $check = "SELECT COUNT(upline) from saved_deals where upline = :uid ";
+                        $statement = $pdo->prepare($check);
+                        $statement -> execute(array(
+                            'uid' => $_SESSION['user_id'],
+                        ));
+                        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+                        foreach($results as $rows){
+                            $count1 = (int) $rows['COUNT(upline)'];
+                            $total = $total + 5 * $count1;
+                        }
+                        //calculate upline 2nd generation
+                        $check2 = "SELECT COUNT(upline) from saved_deals where upline like '%,':uid'%'";
+                        $statement2 = $pdo->prepare($check);
+                        $statement2 -> execute(array(
+                            'uid' => $_SESSION['user_id'],
+                        ));
+                        $results2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
+                        foreach($results2 as $rows2){
+                            $count2 = (int) $rows2['COUNT(upline)'];
+                            $total = $total + 2 * $count2;
+                        }
+                        //calculate upline 3rd generation
+                        $check3 = "SELECT COUNT(upline) from saved_deals where upline like '%,':uid'' ";
+                        $statement3 = $pdo->prepare($check);
+                        $statement3 -> execute(array(
+                            'uid' => $_SESSION['user_id'],
+                        ));
+                        $results3 = $statement3->fetchAll(PDO::FETCH_ASSOC);
+                        foreach($results3 as $rows3){
+                            $count3 = (int) $rows3['COUNT(upline)'];
+                            $total = $total + 1 * $count3;
+                            echo $total;
+                        }
+                    ?>" style="border:solid 1px; border-radius:10px; background-color:gainsboro">
                     <h5>Total Reward:</h5>
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="RM980" style="border:solid 1px; border-radius:10px; background-color:gainsboro">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" 
+                    value="<?php 
+                        $totalredeem = $total * 123;
+                        echo 'RM'.$totalredeem.'';
+                    ?>" 
+                    style="border:solid 1px; border-radius:10px; background-color:gainsboro">
                 </div>
                 <div class="col-lg-12 d-flex justify-content-end">
                     <button class="btn btn-primary" type="button" name="redeem" style="margin:5px">claim</button>
